@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background-image: url("https://i.imgur.com/xtXFmij.jpg");
+    /* background-image: url("https://i.imgur.com/xtXFmij.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
     
 }
 
@@ -11,4 +11,19 @@ body {
     src: url("assets/fonts/beyond_the_mountains.otf") format('otf'),
             url("assets/fonts/beyond_the_mountains.ttf") format('ttf'); 
 
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("https://i.imgur.com/xtXFmij.jpg");
+
+    /* Set a specific height */
+    min-height: 800px; 
+    overflow: hidden;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
