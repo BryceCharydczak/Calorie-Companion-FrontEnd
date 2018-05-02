@@ -14,4 +14,13 @@ img {
 
 li {
     text-decoration-color: yellow;
+    font-size: 18px;
+}
+
+li a:hover {
+    background-color: black;
+}
+
+li a {
+    color: yellow;
 }

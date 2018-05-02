@@ -1,17 +1,24 @@
 img {
     width: 200px;
-    margin-left: 12rem;
+   
     margin-bottom: 2rem;
 }
 
 #pwd {
     width: 50%;
-    margin-left: 2rem;
+    margin-left: 2rem;    
 }
 
-#username {
+#email {
     width: 50%;
-    margin-left: 2rem;
+    margin-left: 2rem;    
+}
+
+label {
+    font-family: fantasy;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
 }
 
 .container {
@@ -23,14 +30,33 @@ img {
 .jumbotron {
     background-color: darkslategray;
     width: 75%;
+    margin-top: 4rem;
+    border-radius: 2rem;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 form {
-    margin-left: 20%;
+    
     text-align: justify;
 }
 
 h2 {
-    text-align: justify;
-    margin-left: 10%;
+    
+    font-family: fantasy;
+   -webkit-text-fill-color: rgba(241, 238, 8, 0.911);
+   text-shadow: 4px 4px 2px rgb(29, 28, 28);
+    
 }
+
+button {
+    width: 10rem;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    color: yellow;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+
+
+
+

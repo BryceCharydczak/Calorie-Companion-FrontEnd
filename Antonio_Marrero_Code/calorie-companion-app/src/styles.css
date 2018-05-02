@@ -5,3 +5,10 @@ body {
     background-size: cover;
     
 }
+
+@font-face { 
+    font-family: "Beyond the Mountains" !important;
+    src: url("assets/fonts/beyond_the_mountains.otf") format('otf'),
+            url("assets/fonts/beyond_the_mountains.ttf") format('ttf'); 
+
+}
