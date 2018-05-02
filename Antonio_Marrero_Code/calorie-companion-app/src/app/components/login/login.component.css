@@ -1,0 +1,36 @@
+img {
+    width: 200px;
+    margin-left: 12rem;
+    margin-bottom: 2rem;
+}
+
+#pwd {
+    width: 50%;
+    margin-left: 2rem;
+}
+
+#username {
+    width: 50%;
+    margin-left: 2rem;
+}
+
+.container {
+    color: yellow;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.jumbotron {
+    background-color: darkslategray;
+    width: 75%;
+}
+
+form {
+    margin-left: 20%;
+    text-align: justify;
+}
+
+h2 {
+    text-align: justify;
+    margin-left: 10%;
+}
