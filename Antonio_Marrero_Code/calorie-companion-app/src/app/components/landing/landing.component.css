@@ -1,0 +1,9 @@
+h1 {
+    color: yellow;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
+}
+
+.container-fluid {
+    margin-top: 15rem;
+}

@@ -1,0 +1,50 @@
+img {
+    width: 300px;
+   margin-left: 3rem;
+    margin-bottom: 2rem;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.jumbotron {
+    margin-top: 10rem;
+    background-color: #323232;
+    width: 75%;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    border-radius: 3rem;
+}
+
+h1 {
+    color: yellow;
+    font-family: fantasy;
+    text-shadow: 6px 6px 2px rgb(29, 28, 28);
+    letter-spacing: 2px;
+}
+
+div#userMenu {
+    margin-top: 2rem;
+    margin-left: 6rem;
+}
+
+#search {
+    margin-top: 2rem;
+}
+
+button {
+    width: 15rem;
+    height: 15rem;
+    font-size: 20px;
+    color: yellow;
+    font-weight: bolder;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
+    box-shadow: 8px 8px 5px 0px rgba(0,0,0,0.75);
+}
+
+button:hover {
+    color: greenyellow;
+}
