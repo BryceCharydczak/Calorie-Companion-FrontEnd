@@ -19,4 +19,20 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  addMeals() {
+    this.router.navigate(['addmeals']);
+  }
+
+  foodSearch() {
+    this.router.navigate(['foodsearch']);
+  }
+
+  summary() {
+    this.router.navigate(['summary']);
+  }
+
+  graphs() {
+    this.router.navigate(['graphs']);
+  }
+
 }

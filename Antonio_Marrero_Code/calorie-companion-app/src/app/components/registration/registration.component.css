@@ -1,7 +1,13 @@
+/* Registration CSS */
 img {
-    width: 200px;
-   
+    width: 300px;
+   margin-left: 3rem;
     margin-bottom: 2rem;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
 }
 
 #pwd {
@@ -11,7 +17,7 @@ img {
 
 #email {
     width: 50%;
-    margin-left: 2rem;    
+    margin-left: 3rem;    
 }
 
 label {
@@ -19,21 +25,23 @@ label {
     font-size: 20px;
     letter-spacing: 2px;
     text-shadow: 4px 4px 2px rgb(29, 28, 28);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 input {
-    margin-left: 2rem;
+    margin-left: 3rem;
     max-width: 50%;
 }
 .container {
     color: yellow;
     margin-left: 20%;
     margin-right: 20%;
-    margin-top: 10rem;
+    margin-top: 6rem;
+    
 }
 
 .jumbotron {
-    background-color: darkslategray;
+    background-color: #323232;
     width: 75%;
     margin-top: 4rem;
     border-radius: 2rem;
@@ -43,13 +51,14 @@ input {
 form {
     
     text-align: justify;
+    
 }
 
 h2 {
     
     font-family: fantasy;
    -webkit-text-fill-color: rgba(241, 238, 8, 0.911);
-   text-shadow: 4px 4px 2px rgb(29, 28, 28);
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
     
 }
 
@@ -58,6 +67,20 @@ button {
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     color: yellow;
     font-weight: bolder;
+    font-size: 18px;
+}
+
+button#clear {
+    width: 15%;
+    margin-left: 1rem;
+}
+
+button#toggleCal {
+    width: 20%;
+    margin-left: 1rem;
+}
+
+div#gender {
     font-size: 18px;
 }
 

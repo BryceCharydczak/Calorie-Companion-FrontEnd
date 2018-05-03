@@ -4,6 +4,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+// Calendar for Datepicker bootstrap from NGX-Datepicker
+// https://github.com/kekeh/ngx-mydatepicker
+import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
+
 // Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -20,6 +24,9 @@ import { AppRoutingModule } from './app-routing.module';
 // Services
 import { UserService } from '../app/services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AddmealsComponent } from './components/addmeals/addmeals.component';
+import { FoodsearchComponent } from './components/foodsearch/foodsearch.component';
+
 
 
 
@@ -32,14 +39,18 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     LandingComponent,
     SummaryComponent,
-    GraphsComponent
+    GraphsComponent,
+    AddmealsComponent,
+    FoodsearchComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NgxMyDatePickerModule.forRoot()
+
   ],
   providers: [ UserService],
   bootstrap: [AppComponent]

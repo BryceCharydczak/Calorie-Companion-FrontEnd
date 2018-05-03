@@ -11,6 +11,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { SummaryComponent } from './components/summary/summary.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
+import { AddmealsComponent } from './components/addmeals/addmeals.component';
+import { FoodsearchComponent } from './components/foodsearch/foodsearch.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -19,7 +21,9 @@ export const routes: Routes = [
     { path: 'registration', component: RegistrationComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'summary', component: SummaryComponent },
-    { path: 'graphs', component: GraphsComponent}
+    { path: 'graphs', component: GraphsComponent },
+    { path: 'addmeals', component: AddmealsComponent },
+    { path: 'foodsearch', component: FoodsearchComponent }
 ];
 
 @NgModule({
