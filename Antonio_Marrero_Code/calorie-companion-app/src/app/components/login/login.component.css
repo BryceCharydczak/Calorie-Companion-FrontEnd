@@ -1,6 +1,7 @@
 img {
-    width: 300px;
-   margin-left: 3rem;
+    width: 50%;
+    margin-right: 2rem;
+    margin-left: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -9,21 +10,16 @@ img {
     justify-content: center;
 }
 
-#pwd {
-    width: 50%;
-    margin-left: 2rem;    
-}
-
-#email {
-    width: 50%;
-    margin-left: 2rem;    
-}
-
 label {
-    font-family: fantasy;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
     letter-spacing: 2px;
     text-shadow: 4px 4px 2px rgb(29, 28, 28);
+}
+
+form {
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .container {
@@ -39,11 +35,6 @@ label {
     margin-top: 4rem;
     border-radius: 2rem;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-}
-
-form {
-    
-    text-align: justify;
 }
 
 h2 {

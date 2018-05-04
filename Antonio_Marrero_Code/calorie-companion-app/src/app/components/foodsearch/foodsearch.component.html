@@ -1,3 +1,31 @@
-<p>
-  foodsearch works!
-</p>
+<div class="flex-container">
+  <div class="jumbotron">
+  
+      <h1 class="text-center">Enter your food:</h1>
+      <form class="form-horizontal text-center">
+      <button class="btn btn-success" (click)="getFood()">Search</button>
+      <input type="text" placeholder="find my food..." [(ngModel)]="searchItem" name="search">
+      </form>
+    
+    <div class="row" *ngIf="currentFood!=null">
+      
+      
+        <h3>{{ currentFood.foods[0].food_name | uppercase }}</h3>
+        <img src="{{ currentFood.foods[0].photo.highres }}" width="40%" height="40%" />
+
+      <div class="col-s-2">
+        <div>Servings: {{ currentFood.foods[0].serving_qty }}</div>
+        <div>Quantity Per: {{ currentFood.foods[0].serving_unit }}</div>
+        <div>Calories: {{ currentFood.foods[0].nf_calories }}</div>
+        <div>Protein: {{ currentFood.foods[0].nf_protein }}</div>
+        <div>Fat: {{ currentFood.foods[0].nf_total_fat }}</div>
+        <div>Saturated Fat: {{ currentFood.foods[0].nf_saturated_fat }}</div>
+        <div>Sodium: {{ currentFood.foods[0].nf_sodium }}</div>
+        <div>Carbodydrates: {{ currentFood.foods[0].nf_total_carbohydrate }}</div>
+        <div>Sugar: {{ currentFood.foods[0].nf_sugars }}</div>
+      </div>
+  
+    </div>
+  </div>
+</div>
+ 

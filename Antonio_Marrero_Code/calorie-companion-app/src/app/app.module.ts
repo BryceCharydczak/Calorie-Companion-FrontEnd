@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 // Calendar for Datepicker bootstrap from NGX-Datepicker
 // https://github.com/kekeh/ngx-mydatepicker
@@ -17,15 +18,16 @@ import { NavComponent } from './components/nav/nav.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { SummaryComponent } from './components/summary/summary.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
+import { AddmealsComponent } from './components/addmeals/addmeals.component';
+import { FoodsearchComponent } from './components/foodsearch/foodsearch.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 
 // Services
 import { UserService } from '../app/services/user.service';
-import { HttpClientModule } from '@angular/common/http';
-import { AddmealsComponent } from './components/addmeals/addmeals.component';
-import { FoodsearchComponent } from './components/foodsearch/foodsearch.component';
+import { FoodInfoService } from '../app/services/food-info.service';
 
 
 
@@ -42,6 +44,7 @@ import { FoodsearchComponent } from './components/foodsearch/foodsearch.componen
     GraphsComponent,
     AddmealsComponent,
     FoodsearchComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,7 @@ import { FoodsearchComponent } from './components/foodsearch/foodsearch.componen
     NgxMyDatePickerModule.forRoot()
 
   ],
-  providers: [ UserService],
+  providers: [ UserService, FoodInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

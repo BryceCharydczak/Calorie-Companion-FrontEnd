@@ -4,6 +4,11 @@ h1 {
     text-shadow: 4px 4px 2px rgb(29, 28, 28);
 }
 
-.container-fluid {
+.flex-container {
     margin-top: 15rem;
+    justify-content: center;
+    color: yellow;
+    
 }
+
+

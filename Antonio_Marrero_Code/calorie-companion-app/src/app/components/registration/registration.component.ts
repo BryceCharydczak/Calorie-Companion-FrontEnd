@@ -59,7 +59,7 @@ export class RegistrationComponent implements OnInit {
         localStorage.setItem('user', JSON.stringify(users));
         console.log(`User, ${this.user.email}, successfully registered!`);
         console.log(localStorage.getItem('user'));
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['login']);
       }
     });
   }

@@ -1,33 +1,16 @@
 <div class="flex-container">
     <div class="jumbotron">
+    
+    <div class="img text-center"><img src="https://i.imgur.com/2IHmFYY.png?1"></div>    
 
-    <div class="flex-container">
-        <div class="img"><img src="https://i.imgur.com/AHVOBEg.png"></div>
-    </div>
-
-      <h1 class="text-center">Menu</h1>
-      
-        <div class="flex-container">
-            <div class="row" id="userMenu">
-                <div class="col-md-7" id="meals">
-                    <button type="submit" class="btn btn-success" id="addmeals" (click)="addMeals()">Add Meals</button>
-                </div>
-                
-                <div class="col-md-7" id="search">
-                    <button type="submit" class="btn btn-success" id="foodsearch" (click)="foodSearch()">Search Food</button>
-                </div>
-            </div>
-
-            <div class="row" id="userMenu">
-                <div class="col-md-7" id="meals">
-                    <button type="submit" class="btn btn-success" id="summary" (click)="summary()">Summary</button>
-                </div>
-                
-                <div class="col-md-7" id="search">
-                    <button type="submit" class="btn btn-success" id="graphs" (click)="graphs()">Graphs</button>
-                </div>
-            </div>
-
+      <h1 class="text-center">Menu</h1>     
+        
+        <div class="btn-group-horizontal">                           
+                <button type="button" class="btn btn-success" id="addmeals" (click)="addMeals()">Add Meals</button>
+                <button type="button" class="btn btn-success" id="foodsearch" (click)="foodSearch()">Search Food</button>                         
+                <button type="submit" class="btn btn-success" id="summary" (click)="summary()">Summary</button>   
+                <button type="submit" class="btn btn-success" id="graphs" (click)="graphs()">Graphs</button>
+            
         </div>
     </div>  
 </div>

@@ -1,6 +1,7 @@
 img {
-    width: 300px;
-   margin-left: 3rem;
+    width: 50%;
+    margin-right: 2rem;
+    margin-left: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -26,15 +27,6 @@ h1 {
     letter-spacing: 2px;
 }
 
-div#userMenu {
-    margin-top: 2rem;
-    margin-left: 6rem;
-}
-
-#search {
-    margin-top: 2rem;
-}
-
 button {
     width: 15rem;
     height: 15rem;
@@ -43,8 +35,14 @@ button {
     font-weight: bolder;
     text-shadow: 4px 4px 2px rgb(29, 28, 28);
     box-shadow: 8px 8px 5px 0px rgba(0,0,0,0.75);
+    border-radius: 3rem;
+    margin: 1rem;
 }
 
 button:hover {
     color: greenyellow;
+}
+
+.btn-group-horizontal {
+    text-align: center;
 }
