@@ -11,9 +11,9 @@ img {
 }
 
 label {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
     font-size: 20px;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-shadow: 4px 4px 2px rgb(29, 28, 28);
 }
 
@@ -23,7 +23,7 @@ form {
 }
 
 .container {
-    color: yellow;
+    color: orange;
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 8rem;
@@ -39,21 +39,25 @@ form {
 
 h2 {
     
-    font-family: fantasy;
-   -webkit-text-fill-color: rgba(241, 238, 8, 0.911);
-   text-shadow: 4px 4px 2px rgb(29, 28, 28);
+    
+   -webkit-text-fill-color: orange;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
     
 }
 
 button {
     width: 10rem;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    color: yellow;
+    color: orange;
     font-weight: bolder;
-    font-size: 18px;
+    font-size: 20px;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
+    letter-spacing: 3px;
 }
 
-
+input {
+    text-align: center;
+}
 
 
 

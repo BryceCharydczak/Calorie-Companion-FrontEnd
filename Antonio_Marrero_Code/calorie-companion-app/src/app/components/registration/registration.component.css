@@ -9,7 +9,7 @@ img {
 .flex-container {
     display: flex;
     justify-content: center;
-    color: yellow;
+    color: orange;
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 8rem;
@@ -22,7 +22,7 @@ label {
     font-size: 20px;
     letter-spacing: 2px;
     text-shadow: 4px 4px 2px rgb(29, 28, 28);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
 }
 
 
@@ -41,17 +41,19 @@ form {
 
 h2 {
     
-    font-family: fantasy;
-   -webkit-text-fill-color: rgba(241, 238, 8, 0.911);
+  
+   -webkit-text-fill-color: orange;
     text-shadow: 4px 4px 2px rgb(29, 28, 28);
     
 }
 
 button {
-    width: 10rem;
+    width: 13rem;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    color: yellow;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
+    color: orange;
     font-weight: bolder;
+    letter-spacing: 3px;
     font-size: 18px;
     
 }

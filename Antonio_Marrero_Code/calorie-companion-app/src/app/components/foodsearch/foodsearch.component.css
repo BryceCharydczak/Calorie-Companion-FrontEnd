@@ -15,7 +15,8 @@
 }
 
 h1 {
-    color: yellow;
+    color: orange;
+    text-shadow: 5px 5px 2px rgb(29, 28, 28);
 }
 
 .row {
@@ -44,4 +45,9 @@ img {
 button {
     width: 10rem;
     font-size: 18px;
+}
+
+.col-s-2 {
+    letter-spacing: 3px;
+    
 }

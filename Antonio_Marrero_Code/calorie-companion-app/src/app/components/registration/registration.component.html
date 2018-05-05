@@ -62,8 +62,10 @@
         <div class="form-group">
           <label class="control-label" for="birthday" >Birthdate:</label>
           
-          <!-- input box styling is bootstrap 3.3.7 -->
-          <!-- Calendar for the birthday, user can pick a date from the toggle calendar -->
+          <!-- input box styling is bootstrap 3.3.7
+          Calendar for the birthday, user can pick a date from the toggle calendar
+          https://github.com/kekeh/ngx-mydatepicker
+           Must run this to use Calendar picker: npm install ngx-mydatepicker -->
           <div class="from-group">
             <input id="bday" class="form-control" style="float:none" placeholder="Select a date" ngx-mydatepicker name="mydate"
             [(ngModel)]="model" [options]="myOptions" #dp="ngx-mydatepicker" (dateChanged)="onDateChanged($event)"/>

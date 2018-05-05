@@ -13,7 +13,7 @@ img {
 }
 
 li {
-    text-decoration-color: yellow;
+    text-decoration-color: orange;
     font-size: 18px;
 }
 
@@ -22,5 +22,6 @@ li a:hover {
 }
 
 li a {
-    color: yellow;
+    color: orange;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
 }

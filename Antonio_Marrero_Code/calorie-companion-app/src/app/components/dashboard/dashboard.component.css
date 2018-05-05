@@ -21,8 +21,7 @@ img {
 }
 
 h1 {
-    color: yellow;
-    font-family: fantasy;
+    color: orange;
     text-shadow: 6px 6px 2px rgb(29, 28, 28);
     letter-spacing: 2px;
 }
@@ -31,7 +30,7 @@ button {
     width: 15rem;
     height: 15rem;
     font-size: 20px;
-    color: yellow;
+    color: orange;
     font-weight: bolder;
     text-shadow: 4px 4px 2px rgb(29, 28, 28);
     box-shadow: 8px 8px 5px 0px rgba(0,0,0,0.75);
@@ -40,7 +39,7 @@ button {
 }
 
 button:hover {
-    color: greenyellow;
+    color: blue;
 }
 
 .btn-group-horizontal {

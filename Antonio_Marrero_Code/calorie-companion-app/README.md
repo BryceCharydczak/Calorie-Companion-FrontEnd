@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Require Depencencies
+If get dependecy issues for the calendar on the registration component by using the date picker of NGX-datepicker run the following command on the cli, this will install the dependency for the datepicker for the registration module date picker:
+npm install ngx-mydatepicker --save
