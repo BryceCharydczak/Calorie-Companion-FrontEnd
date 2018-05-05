@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name = "Users")
+@Table(name = "cuser")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,6 +32,13 @@ public class User implements Serializable {
 	
 	@Column(name="Age")
 	private long age;
+	
+	@Column(name="Gender")
+	private String gender;
+
+	public User() {
+		super();
+	}
 
 	public Long getId() {
 		return id;
@@ -81,6 +88,14 @@ public class User implements Serializable {
 		this.age = age;
 	}
 
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -91,6 +106,7 @@ public class User implements Serializable {
 		int result = 1;
 		result = prime * result + (int) (age ^ (age >>> 32));
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + (int) (height ^ (height >>> 32));
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
@@ -114,6 +130,11 @@ public class User implements Serializable {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (gender == null) {
+			if (other.gender != null)
+				return false;
+		} else if (!gender.equals(other.gender))
+			return false;
 		if (height != other.height)
 			return false;
 		if (id == null) {
@@ -134,10 +155,10 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", weight=" + weight + ", height="
-				+ height + ", age=" + age + "]";
+				+ height + ", age=" + age + ", gender=" + gender + "]";
 	}
 
-	public User(Long id, String email, String password, long weight, long height, long age) {
+	public User(Long id, String email, String password, long weight, long height, long age, String gender) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -145,10 +166,7 @@ public class User implements Serializable {
 		this.weight = weight;
 		this.height = height;
 		this.age = age;
-	}
-	
-	public User() {
-		super();
+		this.gender = gender;
 	}
 	
 }
