@@ -1,25 +1,21 @@
 version: 0.1
 
 phases:
-install:
-commands:
-- echo Installing source NPM dependencies…
-- npm install
-- npm install -g @angular/cli
-build:
-commands:
-- echo Build started on `date`
-- ng build --prod
-- echo Build completed on `date`
-post_build:
-commands:
-- echo Deploying production files to S3 web hosting bucket
-- aws s3 sync --delete dist s3://<NAME OF YOUR S3 BUCKET>
-- echo Files deployed on `date`
+  install:
+    commands:
+      - printenv
+      - npm install
+  build:
+    commands:
+      - npm run build
+  post_build:
+    commands:
+      - mkdir -p build
+      - tar jcf build/myApp-$(date +%Y%m%d%H%m%S).tar.bz2 .eslintrc.js .gitignore README.md buildspec.yml package.json serverless.yml src test
+      - npm install -g serverless
+      - serverless -v -s $(echo ${CODEBUILD_INITIATOR} | cut -d'/' -f2 | cut -d'_' -f3) deploy
+
 artifacts:
-files:
-- '**/*'
-base-directory: 'dist'
-discard-paths: yes
-
-
+  files:
+    - build*/**
+  discard-paths: yes

@@ -13,7 +13,7 @@ commands:
 - echo Build completed on `date`
 post_build:
 commands:
-	- echo Deploying production files to S3 web hosting bucket
+- echo Deploying production files to S3 web hosting bucket
 - aws s3 sync --delete dist s3://<NAME OF YOUR S3 BUCKET>
 - echo Files deployed on `date`
 artifacts:
