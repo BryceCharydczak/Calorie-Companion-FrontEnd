@@ -1,4 +1,5 @@
 export class FoodBank {
+    id: number;
     userId: number;
     name: String;
     calories: number;
@@ -7,3 +8,4 @@ export class FoodBank {
     carbs: number;
     time: Date;
 }
+

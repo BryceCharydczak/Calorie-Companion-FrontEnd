@@ -18,23 +18,23 @@ export class RegistrationComponent implements OnInit {
   loggedUser = localStorage.getItem('user');
   isUser: Boolean = true;
 
-  // ***************** Start of Calendar API ****************** //
-  myOptions: INgxMyDpOptions = {
-    // other options...
-    dateFormat: 'dd/mm/yyyy',
-  };
+  // // ***************** Start of Calendar API ****************** //
+  // myOptions: INgxMyDpOptions = {
+  //   // other options...
+  //   dateFormat: 'dd/mm/yyyy',
+  // };
 
-  // Initialized to specific date (09.10.2018) Calendar API
-  model: any = { date: { year: 2018, month: 10, day: 9 } };
+  // // Initialized to specific date (09.10.2018) Calendar API
+  // model: any = { date: { year: 2018, month: 10, day: 9 } };
 
-   // optional date changed callback Calendar API
-   onDateChanged(event: IMyDateModel): void {
-  }
+  //  // optional date changed callback Calendar API
+  //  onDateChanged(event: IMyDateModel): void {
+  // }
 
-  // Toggles the calendar event handler
-  onCalendarToggle(event: number): void {
-    console.log('onCalendarClosed(): Reason: ', event);
-  }
+  // // Toggles the calendar event handler
+  // onCalendarToggle(event: number): void {
+  //   console.log('onCalendarClosed(): Reason: ', event);
+  // }
 
   // ***************** End of Calendar API ****************** //
 
@@ -59,7 +59,8 @@ export class RegistrationComponent implements OnInit {
         localStorage.setItem('user', JSON.stringify(users));
         console.log(`User, ${this.user.email}, successfully registered!`);
         console.log(localStorage.getItem('user'));
-        this.router.navigate(['login']);
+        // this.router.navigate(['login']);
+        this.router.navigate(['landing']);
       }
     });
   }

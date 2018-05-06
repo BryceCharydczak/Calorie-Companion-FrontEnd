@@ -7,7 +7,7 @@
       <input type="text" placeholder="find my food..." [(ngModel)]="searchItem" name="search">
       </form>
     
-    <div class="row" *ngIf="currentFood!=null">
+    <div class="row" *ngIf="currentFood">
       
       
         <h3>{{ currentFood.foods[0].food_name | uppercase }}</h3>
@@ -24,6 +24,35 @@
         <div>Carbodydrates: {{ currentFood.foods[0].nf_total_carbohydrate }}</div>
         <div>Sugar: {{ currentFood.foods[0].nf_sugars }}</div>
       </div>
+
+      <br>
+      <div>
+        <button class="btn btn-success" (click)="addFood()">Add Food</button>
+      </div>
+
+      <table class="table" id="userTable">
+        <thead>
+          <tr>        
+            <th>Name</th>
+            <th>Calories</th>
+            <th>Protein</th>
+            <th>Fats</th>
+            <th>Carbs</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let savedFood of savedFoods">
+            <td>{{ savedFood.foods[0].food_name }}</td>
+            <td>{{ savedFood.foods[0].nf_calories }}</td>
+            <td>{{ savedFood.foods[0].nf_protein }}</td>
+            <td>{{ savedFood.foods[0].nf_total_fat }}</td>
+            <td>{{ savedFood.foods[0].nf_total_carbohydrate }}</td>
+            <td>{{ savedFood.foods[0].consumed_at }}</td>     
+          </tr>
+         
+        </tbody>
+      </table>
   
     </div>
   </div>

@@ -26,7 +26,7 @@ export class UserService {
   // Subscribe to the User Object
   subscribers: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>((localStorage.getItem('user') !== null) ? true : false);
-  admin: BehaviorSubject<User> = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
+
 
   // Instantiate a new User
   user: User = new User();
@@ -50,7 +50,7 @@ export class UserService {
   public register(user: User) {
     console.log(`Attempting to make a new user: ${user.email}`);
     const json = JSON.stringify(user);
-    return this.http.post<User>(API_URL + 'register', json, HTTP_OPTIONS);
+    return this.http.post<User>(API_URL , json, HTTP_OPTIONS); // (API_URL + 'registration' , json, HTTP_OPTIONS)
   }
 
   // To verify if the User is logged in or not

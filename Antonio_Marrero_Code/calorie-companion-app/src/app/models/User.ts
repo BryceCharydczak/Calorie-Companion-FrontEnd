@@ -6,5 +6,6 @@ export class User {
     gender: String;
     weight: number;
     height: number;
-    birthdate: Date;
+    // birthdate: Date;
+    age: number;
 }

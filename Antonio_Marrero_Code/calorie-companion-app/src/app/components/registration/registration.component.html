@@ -1,7 +1,7 @@
 
 <div class="flex-container">
   <div class="jumbotron">
-      <form class="form-horizontal">
+      <form class="form-horizontal" #ccForm="ngForm">
         <!-- Nutritionix Logo to give attribute to the API -->        
         <div class="img text-center"><img src="https://i.imgur.com/2IHmFYY.png?1"></div>
   
@@ -13,8 +13,10 @@
         <div class="form-group">
           <label type="text" class="control-label col-sm-2" for="email">Email:</label>
           
-            <input type="email" class="form-control" id="email" name="user.email" 
+            <input type="email" required class="form-control" id="email" name="user.email" 
             placeholder="Enter an Email" [(ngModel)]="user.email"> 
+
+            
          
         </div>
   
@@ -22,7 +24,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="password" >Password:</label>
           
-            <input type="password" class="form-control" id="password" name="user.password" 
+            <input type="password" required class="form-control" id="password" name="user.password" 
             placeholder="Enter password" [(ngModel)]="user.password">
           
         </div>
@@ -57,16 +59,25 @@
             placeholder="Wieght in lbs or Kg" [(ngModel)]="user.weight">
           
         </div>
+
+         <!-- Age input division -->
+         <div class="form-group">
+          <label class="control-label col-sm-2" for="age" >Weight:</label>
+           
+            <input type="text" class="form-control" id="age" name="user.age" 
+            placeholder="Enter your age" [(ngModel)]="user.age">
+          
+        </div>
       
-        <!-- Birthdate input division -->
+        <!-- Birthdate input division
         <div class="form-group">
-          <label class="control-label" for="birthday" >Birthdate:</label>
+          <label class="control-label" for="birthday" >Birthdate:</label> -->
           
           <!-- input box styling is bootstrap 3.3.7
           Calendar for the birthday, user can pick a date from the toggle calendar
           https://github.com/kekeh/ngx-mydatepicker
            Must run this to use Calendar picker: npm install ngx-mydatepicker -->
-          <div class="from-group">
+          <!-- <div class="from-group">
             <input id="bday" class="form-control" style="float:none" placeholder="Select a date" ngx-mydatepicker name="mydate"
             [(ngModel)]="model" [options]="myOptions" #dp="ngx-mydatepicker" (dateChanged)="onDateChanged($event)"/>
                 <br>
@@ -78,18 +89,21 @@
                 </button>
           </div>
         </div>
-        <br>
+        <br> -->
         
         <!-- Registration Button -->
         <div class="form-group text-center"> 
           <button type="submit" class="btn btn-success" id="register" (click)="register()">Register</button>
+          <button type="button" class="btn btn-danger"
+              (click)="ccForm.resetForm({})">Reset</button>
         </div>
+        
     </form>
 
     <br>
 
     <!-- Message that pops if any of the credentials are invalid -->
-    <div *ngIf="!isValid" class="alert alert-danger" id="formError">
+    <div *ngIf="!isUser" class="alert alert-danger" id="formError">
       Invalid Credentials! Try again later!
     </div>
 
