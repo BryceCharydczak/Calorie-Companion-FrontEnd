@@ -9,4 +9,5 @@ import CComp.Models.User;
 public interface UserRepo extends JpaRepository<User,Long>{
 
 	public User findUserByEmail(String email);
+	public User findUserByEmailAndPassword(String email, String password);
 }

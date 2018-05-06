@@ -41,6 +41,13 @@ public class UserController {
 		return service.findUserById(id);
 	}
 	
+	@PostMapping(value="/login", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public User loginUser(@RequestBody User user) {
+		return service.loginUser(user);
+	}
+	
+
+	
 	
 	
 	
