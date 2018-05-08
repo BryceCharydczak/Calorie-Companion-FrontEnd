@@ -30,8 +30,13 @@ public class FoodController {
 	
 	
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public Food addUser(@Valid @RequestBody Food newFood) {
-		return service.addFood(newFood);
+	public List<Food> addFoods(@Valid @RequestBody List<Food> newFoods) {
+		
+		for (Food f : newFoods) {
+			service.addFood(f);
+		}
+		
+		return service.findAllFoods();
 	}
 	
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
