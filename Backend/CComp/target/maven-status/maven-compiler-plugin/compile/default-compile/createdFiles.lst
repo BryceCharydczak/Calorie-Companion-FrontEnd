@@ -1,6 +1,11 @@
 CComp\Controller\UserController.class
+CComp\Services\FoodServiceImpl.class
+CComp\Models\Food.class
 CComp\Services\UserServiceImpl.class
 CComp\Repositories\UserRepo.class
 CComp\Models\User.class
+CComp\Controller\FoodController.class
 CComp\Driver.class
 CComp\Services\UserService.class
+CComp\Services\FoodService.class
+CComp\Repositories\FoodRepo.class
