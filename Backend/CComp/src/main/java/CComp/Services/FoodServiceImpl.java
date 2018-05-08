@@ -28,8 +28,8 @@ public class FoodServiceImpl implements FoodService {
 		return repo.findAll();
 	}
 	
-	public Food findFoodByUserid(Long id){
-		return repo.findFoodByUserid(id);
+	public List<Food> findFoodsByUserid(Long id){
+		return repo.findFoodsByUserid(id);
 	}
 
 }

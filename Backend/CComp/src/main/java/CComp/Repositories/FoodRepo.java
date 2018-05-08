@@ -10,6 +10,6 @@ import CComp.Models.User;
 
 @Repository
 public interface FoodRepo extends JpaRepository<Food, Long>{
-	public Food findFoodByUserid(Long id);
+	public List<Food> findFoodsByUserid(Long id);
 
 }

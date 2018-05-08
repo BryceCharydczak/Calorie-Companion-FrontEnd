@@ -8,6 +8,6 @@ public interface FoodService {
 	
 	public Food addFood(Food newFood);
 	public List<Food> findAllFoods();
-	public Food findFoodByUserid(Long id);
+	public List<Food> findFoodsByUserid(Long id);
 
 }
