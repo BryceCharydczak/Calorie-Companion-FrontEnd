@@ -16,7 +16,7 @@ export class RegistrationComponent implements OnInit {
 
   user: User = new User();
   loggedUser = localStorage.getItem('user');
-  isUser: Boolean = true;
+  isValid: Boolean = true;
 
   // // ***************** Start of Calendar API ****************** //
   // myOptions: INgxMyDpOptions = {
@@ -52,7 +52,7 @@ export class RegistrationComponent implements OnInit {
   register() {
     this.userService.register(this.user).subscribe(users => {
       if (users == null) {
-        this.isUser = !this.isUser;
+        this.isValid = !this.isValid;
       } else {
         this.userService.subscribers.next(users);
         this.userService.loggedIn.next(true);

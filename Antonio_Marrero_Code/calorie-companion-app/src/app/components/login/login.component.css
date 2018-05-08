@@ -8,6 +8,10 @@ img {
 .flex-container {
     display: flex;
     justify-content: center;
+    color: orange;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 8rem;
 }
 
 label {
@@ -20,13 +24,6 @@ label {
 form {
     margin-left: 20%;
     margin-right: 20%;
-}
-
-.container {
-    color: orange;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 8rem;
 }
 
 .jumbotron {

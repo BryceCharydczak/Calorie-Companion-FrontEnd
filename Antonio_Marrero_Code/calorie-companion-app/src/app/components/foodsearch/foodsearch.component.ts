@@ -34,8 +34,12 @@ export class FoodsearchComponent implements OnInit {
   addFood() {
     this.foodInfoService.getFoodInfo(this.searchItem).subscribe(res => {
       this.savedFoods.push(res);
-      console.log('This are saved foods ', this.currentFood);
+      console.log('This are saved foods ', this.savedFoods);
     });
+  }
+
+  removeFood() {
+
   }
 
 

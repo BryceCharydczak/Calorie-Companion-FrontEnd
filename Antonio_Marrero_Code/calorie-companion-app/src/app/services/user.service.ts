@@ -43,7 +43,7 @@ export class UserService {
    public loginUser(user: User) {
     console.log(`Attempting to login user: ${user.email}`);
     const json = JSON.stringify(user);
-    return this.http.post<User>(API_URL + 'login', json, HTTP_OPTIONS);
+    return this.http.post<User>(API_URL + '/login', json, HTTP_OPTIONS);
   }
 
   // Register the User when the user clicks the register on the Registration Component

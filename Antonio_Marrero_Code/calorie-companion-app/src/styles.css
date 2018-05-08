@@ -5,7 +5,7 @@
     background-image: url("https://i.imgur.com/xtXFmij.jpg");
 
     /* Set a specific height */
-    min-height: 800px; 
+    min-height: 1000px; 
     overflow: hidden;
 
     /* Create the parallax scrolling effect */
@@ -16,6 +16,7 @@
 }
 
 * {
-    font-family: 'Luckiest Guy', cursive;
+    /* font-family: 'Luckiest Guy', cursive; */
+    font-family: 'Bangers', cursive;
 }
 

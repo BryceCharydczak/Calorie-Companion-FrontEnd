@@ -11,7 +11,7 @@
       
       
         <h3>{{ currentFood.foods[0].food_name | uppercase }}</h3>
-        <img src="{{ currentFood.foods[0].photo.highres }}" width="40%" height="40%" />
+        <img src="{{ currentFood.foods[0].photo.highres }}" width="20%" height="20%" />
 
       <div class="col-s-2">
         <div>Servings: {{ currentFood.foods[0].serving_qty }}</div>
@@ -29,7 +29,9 @@
       <div>
         <button class="btn btn-success" (click)="addFood()">Add Food</button>
       </div>
+      <br>
 
+      <div class="table-responsive">
       <table class="table" id="userTable">
         <thead>
           <tr>        
@@ -48,12 +50,13 @@
             <td>{{ savedFood.foods[0].nf_protein }}</td>
             <td>{{ savedFood.foods[0].nf_total_fat }}</td>
             <td>{{ savedFood.foods[0].nf_total_carbohydrate }}</td>
-            <td>{{ savedFood.foods[0].consumed_at }}</td>     
+            <td>{{ savedFood.foods[0].consumed_at }}</td> 
+            <td><button class="btn btn-danger" (click)="removeFood()">X</button></td>    
           </tr>
          
         </tbody>
       </table>
-  
+    </div>
     </div>
   </div>
 </div>

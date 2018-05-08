@@ -14,12 +14,28 @@ import { User } from '../../models/User';
 })
 export class NavComponent implements OnInit {
 
+  loggedIn: boolean = (localStorage.getItem('user') !== null) ? true : false;
+
+  user: User = new User();
+
   constructor(
     private router: Router,
     private userService: UserService
-  ) { }
+  ) {
+
+    this.userService.getLoggedIn().subscribe(loggedIn => {
+      this.loggedIn = loggedIn;
+    });
+
+   }
 
   ngOnInit() {
+  }
+
+  logout() {
+    localStorage.clear();
+    this.userService.loggedIn.next(false);
+    this.router.navigate(['login']);
   }
 
 }

@@ -25,3 +25,7 @@ li a {
     color: orange;
     text-shadow: 4px 4px 2px rgb(29, 28, 28);
 }
+
+#logout {
+    margin-right: 2rem;
+}

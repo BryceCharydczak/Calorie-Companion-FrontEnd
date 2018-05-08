@@ -51,3 +51,12 @@ button {
     letter-spacing: 3px;
     
 }
+
+.table-responsive {
+    margin-left: 10%;
+    margin-right: 10%;
+    max-width: 80%;
+    color: orange;
+    text-shadow: 5px 5px 2px rgb(29, 28, 28);
+    letter-spacing: 3px;
+}
