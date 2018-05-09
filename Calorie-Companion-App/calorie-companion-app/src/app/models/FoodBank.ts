@@ -1,7 +1,6 @@
 export class FoodBank {
-    id: number;
     userId: number;
-    name: String;
+    // name: String;
     calories: number;
     protein: number;
     fats: number;
