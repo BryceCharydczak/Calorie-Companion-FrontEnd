@@ -21,6 +21,15 @@ public class UserServiceImpl implements UserService{
 	UserRepo repo;
 
 	public User addUser(User newUser) {
+		
+		for(User u : findAllUsers()) {
+			if (u.getEmail().equals(newUser.getEmail())) {
+				return null;
+			}
+		}
+		
+		
+		
 		return repo.save(newUser);
 	}
 

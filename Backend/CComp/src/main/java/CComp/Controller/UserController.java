@@ -43,6 +43,8 @@ public class UserController {
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public User addUser(@Valid @RequestBody User user) {
 
+
+		
 		String pw_hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()); 
 		user.setPassword(pw_hash);
 		
