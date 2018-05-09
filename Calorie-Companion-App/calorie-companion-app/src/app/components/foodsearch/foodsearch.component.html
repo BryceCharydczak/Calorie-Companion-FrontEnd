@@ -1,0 +1,68 @@
+<div class="flex-container">
+  <div class="jumbotron">
+  
+      <h1 class="text-center">Enter food:</h1>
+      <form class="form-horizontal text-center">
+      <button class="btn btn-success" (click)="getFood()">Search</button>
+      <input type="text" placeholder="find my food..." [(ngModel)]="searchItem" name="search">
+      </form>
+    
+    <div class="row" *ngIf="currentFood">
+      
+      
+        <h3>{{ currentFood.foods[0].food_name | uppercase }}</h3>
+        <img src="{{ currentFood.foods[0].photo.highres }}" width="20%" height="20%" />
+
+      <div class="col-s-2">
+        <div>Servings: {{ currentFood.foods[0].serving_qty }}</div>
+        <div>Quantity Per: {{ currentFood.foods[0].serving_unit }}</div>
+        <div>Calories: {{ currentFood.foods[0].nf_calories }}</div>
+        <div>Protein: {{ currentFood.foods[0].nf_protein }}</div>
+        <div>Fat: {{ currentFood.foods[0].nf_total_fat }}</div>
+        <div>Saturated Fat: {{ currentFood.foods[0].nf_saturated_fat }}</div>
+        <div>Sodium: {{ currentFood.foods[0].nf_sodium }}</div>
+        <div>Carbodydrates: {{ currentFood.foods[0].nf_total_carbohydrate }}</div>
+        <div>Sugar: {{ currentFood.foods[0].nf_sugars }}</div>
+      </div>
+
+      <br>
+      <div>
+        <button class="btn btn-success" (click)="addFood()">Add Food</button>
+      </div>
+      <br>
+
+      <div class="table-responsive">
+      <table class="table" id="userTable">
+        <thead>
+          <tr>        
+            <th>Name</th>
+            <th>Calories</th>
+            <th>Protein</th>
+            <th>Fats</th>
+            <th>Carbs</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let savedFood of savedFoods">
+            <td>{{ savedFood.foods[0].food_name }}</td>
+            <td>{{ savedFood.foods[0].nf_calories }}</td>
+            <td>{{ savedFood.foods[0].nf_protein }}</td>
+            <td>{{ savedFood.foods[0].nf_total_fat }}</td>
+            <td>{{ savedFood.foods[0].nf_total_carbohydrate }}</td>
+            <td>{{ savedFood.foods[0].consumed_at }}</td> 
+            <td><button class="btn btn-danger" (click)="removeFood()">X</button></td>    
+          </tr>
+         
+        </tbody>
+      </table>
+      <div>
+        <button class="btn btn-success" (click)="submitFood()">Submit Food</button>
+        <button class="btn btn-danger"
+        (click)="reset()">Reset</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+ 

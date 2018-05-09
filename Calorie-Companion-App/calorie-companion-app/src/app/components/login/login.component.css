@@ -1,0 +1,60 @@
+img {
+    width: 50%;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    color: orange;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 8rem;
+}
+
+label {
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
+}
+
+form {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.jumbotron {
+    background-color: #323232;
+    width: 75%;
+    margin-top: 4rem;
+    border-radius: 2rem;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+h2 {
+    
+    
+   -webkit-text-fill-color: orange;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
+    
+}
+
+button {
+    width: 10rem;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    color: orange;
+    font-weight: bolder;
+    font-size: 20px;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
+    letter-spacing: 3px;
+}
+
+input {
+    text-align: center;
+}
+
+
+
