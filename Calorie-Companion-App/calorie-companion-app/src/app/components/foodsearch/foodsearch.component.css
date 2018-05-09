@@ -1,0 +1,62 @@
+.flex-container {
+    margin-top: 15rem;
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+}
+
+.jumbotron {
+    background-color: #323232;
+    width: 75%;
+    margin-top: 4rem;
+    margin-bottom: 10rem;
+    border-radius: 2rem;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+h1 {
+    color: orange;
+    text-shadow: 5px 5px 2px rgb(29, 28, 28);
+}
+
+.row {
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    font-weight: bolder;
+}
+
+input {
+    margin-left: 1rem;
+    height: 4rem;
+    text-align: center;
+    font-size: 18px;
+}
+
+form {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+img {
+    margin-bottom: 2rem;
+}
+
+button {
+    width: 10rem;
+    font-size: 18px;
+}
+
+.col-s-2 {
+    letter-spacing: 3px;
+    
+}
+
+.table-responsive {
+    margin-left: 10%;
+    margin-right: 10%;
+    max-width: 80%;
+    color: orange;
+    text-shadow: 5px 5px 2px rgb(29, 28, 28);
+    letter-spacing: 3px;
+}

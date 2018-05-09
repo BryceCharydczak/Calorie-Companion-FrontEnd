@@ -1,0 +1,111 @@
+
+<div class="flex-container">
+  <div class="jumbotron">
+      <form class="form-horizontal" #ccForm="ngForm">
+        <!-- Nutritionix Logo to give attribute to the API -->        
+        <div class="img text-center"><img src="https://i.imgur.com/2IHmFYY.png?1"></div>
+  
+        <!-- Text to advice the User to register for the app -->
+        <h2 class="text-center">Please Register With Us!</h2>
+        <br>
+
+        <!-- Email input division -->
+        <div class="form-group">
+          <label type="text" class="control-label col-sm-2" for="email">Email:</label>
+          
+            <input type="email" required class="form-control" id="email" name="user.email" 
+            placeholder="Enter an Email" [(ngModel)]="user.email"> 
+
+            
+         
+        </div>
+  
+        <!-- Password input division -->
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="password" >Password:</label>
+          
+            <input type="password" required class="form-control" id="password" name="user.password" 
+            placeholder="Enter password" [(ngModel)]="user.password">
+          
+        </div>
+    
+        <!-- Gender input division -->
+        <div class="form-group">
+          <label class="control-label" for="gender" >Gender:</label>  <br><br>   
+          <ul>  
+            <li>    
+              <input type="radio" name="user.gender" [(ngModel)]="user.gender" value="male">Male
+            </li>
+            <li>
+              <input type="radio" name="user.gender" [(ngModel)]="user.gender" value="female">Female   
+            </li> 
+          </ul>      
+        </div>
+  
+        <!-- Height input division -->
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="height" >Height:</label>
+           
+            <input type="text" class="form-control" id="height" name="user.height" 
+            placeholder="Height in inches" [(ngModel)]="user.height">
+          
+        </div>
+      
+        <!-- Weight input division -->
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="weight" >Weight:</label>
+           
+            <input type="text" class="form-control" id="weight" name="user.weight" 
+            placeholder="Wieght in lbs or Kg" [(ngModel)]="user.weight">
+          
+        </div>
+
+         <!-- Age input division -->
+         <div class="form-group">
+          <label class="control-label col-sm-2" for="age" >Weight:</label>
+           
+            <input type="text" class="form-control" id="age" name="user.age" 
+            placeholder="Enter your age" [(ngModel)]="user.age">
+          
+        </div>
+      
+        <!-- Birthdate input division
+        <div class="form-group">
+          <label class="control-label" for="birthday" >Birthdate:</label> -->
+          
+          <!-- input box styling is bootstrap 3.3.7
+          Calendar for the birthday, user can pick a date from the toggle calendar
+          https://github.com/kekeh/ngx-mydatepicker
+           Must run this to use Calendar picker: npm install ngx-mydatepicker -->
+          <!-- <div class="from-group">
+            <input id="bday" class="form-control" style="float:none" placeholder="Select a date" ngx-mydatepicker name="mydate"
+            [(ngModel)]="model" [options]="myOptions" #dp="ngx-mydatepicker" (dateChanged)="onDateChanged($event)"/>
+                <br>
+                <button id="toggleCal" type="button" class="btn btn-success" (click)="dp.toggleCalendar()">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+                <button id="clear" type="button" class="btn btn-danger" (click)="dp.clearDate()">
+                  <i class="glyphicon glyphicon-remove"></i>
+                </button>
+          </div>
+        </div>
+        <br> -->
+        
+        <!-- Registration Button -->
+        <div class="form-group text-center"> 
+          <button type="submit" class="btn btn-success" id="register" (click)="register()">Register</button>
+          <button type="button" class="btn btn-danger"
+              (click)="ccForm.resetForm({})">Reset</button>
+        </div>
+        
+    </form>
+
+    <br>
+
+    <!-- Message that pops if any of the credentials are invalid -->
+    <div *ngIf="!isValid" class="alert alert-danger" id="formError">
+      Invalid Credentials! Try again later!
+    </div>
+
+  </div>
+</div>

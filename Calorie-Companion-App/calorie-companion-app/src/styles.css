@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+.parallax {
+    /* The image used */
+    background-image: url("https://i.imgur.com/xtXFmij.jpg");
+
+    /* Set a specific height */
+    min-height: 1000px; 
+    overflow: hidden;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+* {
+    /* font-family: 'Luckiest Guy', cursive; */
+    font-family: 'Bangers', cursive;
+}
+

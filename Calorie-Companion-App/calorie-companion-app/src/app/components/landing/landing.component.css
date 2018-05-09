@@ -1,0 +1,16 @@
+h1 {
+    color: orange;
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
+}
+
+.flex-container {
+    margin-top: 15rem;
+    justify-content: center;
+    color: orange;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
+    
+}
+
+
