@@ -2,7 +2,10 @@ package CComp.Services;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +15,7 @@ import CComp.Repositories.UserRepo;
 @Service
 @Transactional
 public class UserServiceImpl implements UserService{
+
 
 	@Autowired
 	UserRepo repo;
@@ -33,6 +37,8 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	public User loginUser(User u){
+	
 		return repo.findUserByEmailAndPassword(u.getEmail(), u.getPassword());
 	}
+	
 }

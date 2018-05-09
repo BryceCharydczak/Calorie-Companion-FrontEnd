@@ -1,5 +1,6 @@
 package CComp.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -32,11 +33,15 @@ public class FoodController {
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public List<Food> addFoods(@Valid @RequestBody List<Food> newFoods) {
 		
+		List<Food> foods = new ArrayList<Food>();
 		for (Food f : newFoods) {
 			service.addFood(f);
+			foods.add(f);
 		}
 		
-		return service.findAllFoods();
+		
+		
+		return foods;
 	}
 	
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
