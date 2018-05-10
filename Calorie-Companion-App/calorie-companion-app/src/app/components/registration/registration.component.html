@@ -14,10 +14,7 @@
           <label type="text" class="control-label col-sm-2" for="email">Email:</label>
           
             <input type="email" required class="form-control" id="email" name="user.email" 
-            placeholder="Enter an Email" [(ngModel)]="user.email"> 
-
-            
-         
+            placeholder="Enter an Email" [(ngModel)]="user.email">  
         </div>
   
         <!-- Password input division -->
@@ -48,7 +45,6 @@
            
             <input type="text" class="form-control" id="height" name="user.height" 
             placeholder="Height in inches" [(ngModel)]="user.height">
-          
         </div>
       
         <!-- Weight input division -->
@@ -57,7 +53,6 @@
            
             <input type="text" class="form-control" id="weight" name="user.weight" 
             placeholder="Wieght in lbs or Kg" [(ngModel)]="user.weight">
-          
         </div>
 
          <!-- Age input division -->
@@ -66,30 +61,7 @@
            
             <input type="text" class="form-control" id="age" name="user.age" 
             placeholder="Enter your age" [(ngModel)]="user.age">
-          
         </div>
-      
-        <!-- Birthdate input division
-        <div class="form-group">
-          <label class="control-label" for="birthday" >Birthdate:</label> -->
-          
-          <!-- input box styling is bootstrap 3.3.7
-          Calendar for the birthday, user can pick a date from the toggle calendar
-          https://github.com/kekeh/ngx-mydatepicker
-           Must run this to use Calendar picker: npm install ngx-mydatepicker -->
-          <!-- <div class="from-group">
-            <input id="bday" class="form-control" style="float:none" placeholder="Select a date" ngx-mydatepicker name="mydate"
-            [(ngModel)]="model" [options]="myOptions" #dp="ngx-mydatepicker" (dateChanged)="onDateChanged($event)"/>
-                <br>
-                <button id="toggleCal" type="button" class="btn btn-success" (click)="dp.toggleCalendar()">
-                  <i class="glyphicon glyphicon-calendar"></i>
-                </button>
-                <button id="clear" type="button" class="btn btn-danger" (click)="dp.clearDate()">
-                  <i class="glyphicon glyphicon-remove"></i>
-                </button>
-          </div>
-        </div>
-        <br> -->
         
         <!-- Registration Button -->
         <div class="form-group text-center"> 

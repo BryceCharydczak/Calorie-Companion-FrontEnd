@@ -29,7 +29,6 @@ export class FoodsearchComponent implements OnInit {
 
   // The user can search any type of food by typing on the search bar and
   // the query will hit the API endpoint and return a food.
-
   getFood() {
     this.foodInfoService.getFoodInfo(this.searchItem).subscribe( res => {
 
@@ -43,17 +42,13 @@ export class FoodsearchComponent implements OnInit {
 
   // After searching a food, the user can add that food to the list of foods
   // the user wants to add for the array.
-
   addFood() {
     this.foodInfoService.getFoodInfo(this.searchItem).subscribe(res => {
+
       this.savedFoods.push(res);
-
-      // console.log('This are saved foods ', this.savedFoods);
-      localStorage.setItem('foodbank', JSON.stringify(this.savedFoods));
-      console.log('-------------------', this.savedFoods);
-      // console.log('After Res is stringify: ' , localStorage.getItem('foodbank'));
-
       
+      localStorage.setItem('foodbank', JSON.stringify(this.savedFoods));
+      console.log('-------------------', this.savedFoods);      
     });
   }
 
@@ -64,14 +59,13 @@ export class FoodsearchComponent implements OnInit {
       console.log('This are saved foods ', this.savedFoods);
   }
 
+  // Removes all added foods from the table
   reset() {
     this.savedFoods = [];
     console.log('Table Reseted');
   }
 
   submitFood() {
-
-
     for(let i = 0; i < this.savedFoods.length; i++){
     let userId = +this.id; 
     let now: Date = new Date();
@@ -86,10 +80,7 @@ export class FoodsearchComponent implements OnInit {
     f.protein = this.savedFoods[i].foods[0].nf_protein;
     
     this.somefoods.push(f);
-  
-    // console.log('-----foodbank-----', this.foodBank);
-    
-    // let k = JSON.stringify(this.somefoods[i]);
+
     let k = JSON.stringify(this.somefoods);
     console.log('strigify k', k);
     
@@ -99,19 +90,7 @@ export class FoodsearchComponent implements OnInit {
     this.foodInfoService.sendFoods(nk).subscribe(res => {
         console.log('foods submitted');
     });
-    
-    // localStorage.setItem('foods', JSON.stringify(this.foodBank));
-    // console.log('strigify somefoods', localStorage.getItem('foods'));
-    // this.foodInfoService.sendFoods(this.foodBank).subscribe(res => {
-    //  this.foodBank = res;
-    //   localStorage.setItem('foods', JSON.stringify(res));
-    //   console.log('Foods Sent ----------' , res);
-    // });
-    
-
- 
   }
-
 
   constructor(
     private foodInfoService: FoodInfoService,
