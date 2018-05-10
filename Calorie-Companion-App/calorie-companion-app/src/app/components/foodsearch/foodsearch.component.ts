@@ -47,10 +47,13 @@ export class FoodsearchComponent implements OnInit {
   addFood() {
     this.foodInfoService.getFoodInfo(this.searchItem).subscribe(res => {
       this.savedFoods.push(res);
-      console.log('This are saved foods ', this.savedFoods);
 
-      localStorage.setItem('foodbank', JSON.stringify(res));
-      console.log(localStorage.getItem('foodbank'));
+      // console.log('This are saved foods ', this.savedFoods);
+      localStorage.setItem('foodbank', JSON.stringify(this.savedFoods));
+      console.log('-------------------', this.savedFoods);
+      // console.log('After Res is stringify: ' , localStorage.getItem('foodbank'));
+
+      
     });
   }
 
@@ -67,33 +70,45 @@ export class FoodsearchComponent implements OnInit {
 
   submitFood() {
 
-    // Comments to test in console
-    console.log('for this user: ' , localStorage.getItem('user'));
-    console.log('User Id is: ' + this.foodBank.userId); 
-    console.log(this.savedFoods);
-    console.log('Getting Items of foodbank' + localStorage.getItem('foodbank'));
 
-    let myObj = JSON.parse(localStorage.getItem('foodbank'));
-
-    // setting values to the foodBank Object
-    let i = 0;
-    let userId = +this.id;
-    this.foodBank.userId = userId;
+    for(let i = 0; i < this.savedFoods.length; i++){
+    let userId = +this.id; 
     let now: Date = new Date();
-    this.foodBank.calories = myObj.foods['0'].nf_calories;
-    this.foodBank.carbs = myObj.foods['0'].nf_total_carbohydrate;
-    this.foodBank.fats = myObj.foods['0'].nf_total_fat;
-    this.foodBank.protein = myObj.foods['0'].nf_protein;
-    this.foodBank.time = now;
-    for (i = 0; i < this.savedFoods.length; i++) {
-    this.somefoods.push(this.foodBank);
-    }
-    localStorage.setItem('foodbank', JSON.stringify(this.foodBank));
-    console.log('foodbank ', localStorage.getItem('foodbank'));
-    console.log('Array List' + this.somefoods);
+    let f = new FoodBank();
 
-    localStorage.setItem('foodbank', JSON.stringify(this.somefoods));
-    console.log('foodbank', localStorage.getItem('foodbank'));
+    f.userId = userId;
+    f.time = now;
+    f.name = this.savedFoods[i].foods[0].food_name;
+    f.calories = this.savedFoods[i].foods[0].nf_calories;
+    f.carbs = this.savedFoods[i].foods[0].nf_total_carbohydrate;
+    f.fats = this.savedFoods[i].foods[0].nf_total_fat;
+    f.protein = this.savedFoods[i].foods[0].nf_protein;
+    
+    this.somefoods.push(f);
+  
+    // console.log('-----foodbank-----', this.foodBank);
+    
+    // let k = JSON.stringify(this.somefoods[i]);
+    let k = JSON.stringify(this.somefoods);
+    console.log('strigify k', k);
+    
+    }    
+
+    let nk = JSON.stringify(this.somefoods);
+    this.foodInfoService.sendFoods(nk).subscribe(res => {
+        console.log('foods submitted');
+    });
+    
+    // localStorage.setItem('foods', JSON.stringify(this.foodBank));
+    // console.log('strigify somefoods', localStorage.getItem('foods'));
+    // this.foodInfoService.sendFoods(this.foodBank).subscribe(res => {
+    //  this.foodBank = res;
+    //   localStorage.setItem('foods', JSON.stringify(res));
+    //   console.log('Foods Sent ----------' , res);
+    // });
+    
+
+ 
   }
 
 

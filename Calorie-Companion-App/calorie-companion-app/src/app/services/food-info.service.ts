@@ -9,14 +9,22 @@ import { Observable } from 'rxjs/Observable';
 
 
 // Constants
+
 const API_URL1 = 'http://localhost:4200/chart-app/';
 const HTTP_OPTIONS = ({
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'x-app-id': '3ac2b31c',
-    'x-app-key': 'aad6cdf3b518e9518f6d9f21b7ee1987'
+    'x-app-id': '127ec186',
+    'x-app-key': '5de4c87c9c140ebb37b0e8b2decd4478'
   })
 });
+const HTTP_OPTIONS2 = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
+
+const API_URL = 'http://ccomp-env.frwspvq277.us-east-2.elasticbeanstalk.com/';
 
 @Injectable()
 export class FoodInfoService {
@@ -34,8 +42,13 @@ export class FoodInfoService {
   }
 
 
-  sendFoods () {
-
+  sendFoods (nk: string) {
+    console.log(`Attempting to submit foods`);
+    // const json = JSON.stringify(nk);
+    // console.log('Send Foods', json);
+    console.log('send foods DONE');
+    return this.http.post<FoodBank>(API_URL + 'foods', nk, HTTP_OPTIONS2);
+    
 
 
   }
