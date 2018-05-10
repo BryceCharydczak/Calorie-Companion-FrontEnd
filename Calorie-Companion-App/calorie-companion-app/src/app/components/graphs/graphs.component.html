@@ -1,0 +1,15 @@
+
+<div style="padding-top:10rem" [hidden]="!chart">
+  <canvas id="canvas">{{ chart }}</canvas>
+</div>
+<div>
+  <div>
+    <label>From: </label>
+    <input type="date" #from>
+    <label>To: </label>
+    <input type="date" #to>
+  </div>
+  <label style="font-size:1.5rem">{{ dateMessage }}</label>
+  <br>
+  <button (click)="this.getData(from.value, to.value)" >Get Data</button>
+</div>

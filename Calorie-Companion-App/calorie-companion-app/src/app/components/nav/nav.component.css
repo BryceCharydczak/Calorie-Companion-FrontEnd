@@ -1,0 +1,31 @@
+#logout {
+    margin-top: 1rem;
+}
+
+nav {
+    box-shadow: 1px -1px 17px 7px rgba(0,0,0,0.75);
+    
+}
+
+img {
+    width: 110px;
+    margin: 1rem;
+}
+
+li {
+    text-decoration-color: orange;
+    font-size: 18px;
+}
+
+li a:hover {
+    background-color: black;
+}
+
+li a {
+    color: orange;
+    text-shadow: 4px 4px 2px rgb(29, 28, 28);
+}
+
+#logout {
+    margin-right: 2rem;
+}
