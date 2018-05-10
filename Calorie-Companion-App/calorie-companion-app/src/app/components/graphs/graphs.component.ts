@@ -22,20 +22,23 @@ export class GraphsComponent implements OnInit {
   this.carbs = carbs;
   this.time = time;
   */
-  /* holds all user data */
+ /* holds all user data */
   userData: FoodBank[] = new Array();
-  /* holds user data aggretated by day */
+/* holds user data aggretated by day */
   sortedData: FoodBank[] = new Array();
   // dateMessage
   dateMessage = 'Enter the start and end dates';
   // chart array to hold our graphs
-  chart = [];
+  chart;
   // arrays of individual values for use with chart array
   calories = [];
   protein = [];
   fats = [];
   carbs = [];
   times = [];
+
+  dateStartIndex = 0;
+  dateEndIndex = undefined;
 
 
   /* grabs the current date button entries and will eventually
@@ -51,33 +54,106 @@ export class GraphsComponent implements OnInit {
       return;
     }
     const fromDate = new Date(from);
+    fromDate.setDate(fromDate.getDate() - 1); // decrement cause glitch
     const toDate = new Date(to);
-    if (fromDate.valueOf() > toDate.valueOf()) {
+    toDate.setDate(toDate.getDate() + 1); // increment cause glitch
+    if (fromDate.valueOf() >= toDate.valueOf()) {
       this.dateMessage = '\tFrom date must be earlier than To date!';
       return;
     }
-    console.log('Dates validated');
-    console.log(this.userData);
+    // finding start index from left of array
+    for (let i = 0; i <= this.userData.length; i++) {
+      if (new Date(this.userData[i].time) > fromDate) {
+        this.dateStartIndex = i;
+        break;
+      }
+    }
+    // finding end index from right of array
+    for (let i = this.userData.length - 1; i >= 0; i--) {
+      if (new Date(this.userData[i].time) < toDate) {
+        this.dateEndIndex = i + 1;
+        break;
+      }
+    }
+
+    console.log(this.dateStartIndex, this.dateEndIndex);
+    console.log(this.userData[this.dateStartIndex].time, this.userData[this.dateEndIndex].time);
+    this.sortedData = this.getDailyData(this.userData.slice(this.dateStartIndex, this.dateEndIndex + 1));
+    console.log('sliced: ' + this.sortedData[0]);
+    this.refreshChart();
+
+    console.log(this.chart.data.labels);
 
   }
 
+  /* Reset charts with new data */
+  refreshChart() {
+
+    console.log(this.chart);
+
+    this.calories = [];
+    this.protein = [];
+    this.fats = [];
+    this.carbs = [];
+    this.times = [];
+
+    for (let i = 0; i < this.sortedData.length; i++) {
+      this.calories.push(this.sortedData[i].calories);
+      this.protein.push(this.sortedData[i].protein);
+      this.fats.push(this.sortedData[i].fats);
+      this.carbs.push(this.sortedData[i].carbs);
+      this.times.push(this.sortedData[i].time);
+    }
+
+    this.chart.data.labels = this.times;
+    console.log(this.times);
+    this.chart.data.datasets[0].data = this.calories;
+    console.log(this.calories);
+    this.chart.data.datasets[1].data = this.protein;
+    console.log(this.protein);
+    this.chart.data.datasets[2].data = this.fats;
+    console.log(this.fats);
+    this.chart.data.datasets[3].data = this.carbs;
+    console.log(this.carbs);
+
+    this.chart.update();
+    console.log(this.chart);
+  }
+
   /* uses all use data to create an accumulation of nutrients on a per day basis */
-  getDailyData(foods: FoodBank[]) {
+  getDailyData(foods: FoodBank[]): FoodBank[] {
 
     const dailyFoods = new Array();
+
     let currentDate = foods[0].time;
     let caloriesVal = foods[0].calories;
     let proteinVal = foods[0].protein;
     let fatsVal = foods[0].fats;
     let carbsVal = foods[0].carbs;
-    for (let i = 1; i < foods.length; i++) {
+
+    // dailyFoods.push({
+    //   calories: caloriesVal,
+    //   protein: proteinVal,
+    //   fats: fatsVal,
+    //   carbs: carbsVal,
+    //   time: currentDate});
+
+    for (let i = 1;  i < foods.length; i++) {
+
       if (new Date(foods[i].time).getDay() === new Date(currentDate).getDay()) {
+
+        currentDate = foods[i].time;
         caloriesVal += foods[i].calories;
         proteinVal += foods[i].protein;
         fatsVal += foods[i].fats;
         carbsVal += foods[i].carbs;
 
-
+        // dailyFoods.push({
+        //   calories: caloriesVal,
+        //   protein: proteinVal,
+        //   fats: fatsVal,
+        //   carbs: carbsVal,
+        //   time: currentDate});
 
       } else {
 
@@ -86,17 +162,15 @@ export class GraphsComponent implements OnInit {
           protein: proteinVal,
           fats: fatsVal,
           carbs: carbsVal,
-          time: currentDate
-        });
+          time: currentDate});
 
-        currentDate = foods[i].time;
-        caloriesVal = foods[i].calories;
-        proteinVal = foods[i].protein;
-        fatsVal = foods[i].fats;
-        carbsVal = foods[i].carbs;
+          currentDate = foods[i].time;
+          caloriesVal = foods[i].calories;
+          proteinVal = foods[i].protein;
+          fatsVal = foods[i].fats;
+          carbsVal = foods[i].carbs;
       }
     }
-    console.log(dailyFoods);
     return dailyFoods;
   }
 
@@ -106,12 +180,12 @@ export class GraphsComponent implements OnInit {
     // must be changed when we implement user data requests
     this.graphService.getUserFoodHistory(65).subscribe(foods => {
       this.userData = foods;
+      // user data must be sorted
+      this.userData.sort(
+        function( a, b) {return new Date(a.time).getTime() - new Date(b.time).getTime(); });
+      console.log(this.userData);
       // sort data into individual days
       this.sortedData = this.getDailyData(this.userData); // this.getDailyData(this.userData);
-
-      console.log('foods: ' + foods);
-      console.log('user: ' + this.sortedData);
-      console.log('sort: ' + this.sortedData);
 
       for (let i = 0; i < this.sortedData.length; i++) {
         this.calories.push(this.sortedData[i].calories);
@@ -121,7 +195,6 @@ export class GraphsComponent implements OnInit {
         this.times.push(this.sortedData[i].time);
       }
       // all user food populated
-
 
       Chart.defaults.global.defaultFontSize = 18;
       Chart.defaults.global.defaultFontColor = '#ff8500';
@@ -148,21 +221,18 @@ export class GraphsComponent implements OnInit {
           }]
         },
         options: {
+          multiTooltipTemplate: '<%= value + " %" %>',
           scales: {
             xAxes: [{
               type: 'time',
               time: {
-                minUnit: 'hour'
+                minUnit: 'day'
               },
               distribution: 'linear'
             }]
           }
         }
       });
-
-
     });
-
-    // chart instantiation based on current user data
   }
 }
