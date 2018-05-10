@@ -43,6 +43,7 @@ export class UserService {
    public loginUser(user: User) {
     console.log(`Attempting to login user: ${user.email}`);
     const json = JSON.stringify(user);
+
     return this.http.post<User>(API_URL + 'users/login', json, HTTP_OPTIONS);
   }
 
@@ -50,6 +51,7 @@ export class UserService {
   public register(user: User) {
     console.log(`Attempting to make a new user: ${user.email}`);
     const json = JSON.stringify(user);
+
     return this.http.post<User>(API_URL + 'users', json, HTTP_OPTIONS); // (API_URL + 'registration' , json, HTTP_OPTIONS)
   }
 

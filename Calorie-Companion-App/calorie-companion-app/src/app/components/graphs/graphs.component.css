@@ -1,3 +1,9 @@
+
+label {
+    color: yellow;
+    font-size: 2rem;
+}
+
 canvas {
     margin-bottom: 15rem;
     max-height: 70%;
