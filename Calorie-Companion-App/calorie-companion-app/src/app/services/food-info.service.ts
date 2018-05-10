@@ -14,8 +14,8 @@ const API_URL1 = 'http://localhost:4200/chart-app/';
 const HTTP_OPTIONS = ({
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'x-app-id': '127ec186',
-    'x-app-key': '5de4c87c9c140ebb37b0e8b2decd4478'
+    'x-app-id': 'ec580b4d',
+    'x-app-key': '31b3fef2b41294a03d8a69572c55b6f7'
   })
 });
 const HTTP_OPTIONS2 = {

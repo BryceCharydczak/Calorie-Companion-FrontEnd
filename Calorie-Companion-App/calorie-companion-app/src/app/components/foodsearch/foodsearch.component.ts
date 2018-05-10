@@ -59,13 +59,14 @@ export class FoodsearchComponent implements OnInit {
 
   // Removes individual row by pressing the remove button on that
   // particular food the user wants to remove.
-  removeFood() {
-      this.savedFoods.slice();
+  removeFood(index) {
+      this.savedFoods.splice(index, 1);
       console.log('This are saved foods ', this.savedFoods);
   }
 
   reset() {
-
+    this.savedFoods = [];
+    console.log('Table Reseted');
   }
 
   submitFood() {

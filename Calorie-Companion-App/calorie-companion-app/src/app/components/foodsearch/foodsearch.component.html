@@ -44,20 +44,26 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let savedFood of savedFoods">
+          <tr *ngFor="let savedFood of savedFoods; let i = index">
             <td>{{ savedFood.foods[0].food_name }}</td>
             <td>{{ savedFood.foods[0].nf_calories }}</td>
             <td>{{ savedFood.foods[0].nf_protein }}</td>
             <td>{{ savedFood.foods[0].nf_total_fat }}</td>
             <td>{{ savedFood.foods[0].nf_total_carbohydrate }}</td>
             <td>{{ savedFood.foods[0].consumed_at }}</td> 
-            <td><button class="btn btn-danger" (click)="removeFood()">X</button></td>    
+            <td><button class="btn btn-danger" (click)="removeFood(i)">X</button></td>    
           </tr>
          
         </tbody>
       </table>
+
+      <div>
+        <button class="btn btn-success" (click)="submitFood()">Submit Food</button>
+        <button class="btn btn-danger"
+        (click)="reset()">Reset</button>
+      </div>
+
     </div>
     </div>
   </div>
 </div>
- 
