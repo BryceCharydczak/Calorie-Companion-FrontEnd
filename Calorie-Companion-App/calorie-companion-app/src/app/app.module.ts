@@ -30,9 +30,6 @@ import { UserService } from '../app/services/user.service';
 import { FoodInfoService } from '../app/services/food-info.service';
 import { GraphService } from './services/graph.service';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +54,7 @@ import { GraphService } from './services/graph.service';
 
   ],
   providers: [ UserService, FoodInfoService, GraphService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

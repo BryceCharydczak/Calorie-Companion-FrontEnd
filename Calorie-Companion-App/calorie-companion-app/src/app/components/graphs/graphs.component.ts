@@ -1,8 +1,7 @@
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { GraphService } from '../../services/graph.service';
-
-// Chart.js Dependencies for the charts
 import { Chart } from 'chart.js';
 import { FoodBank } from '../../models/FoodBank';
 
