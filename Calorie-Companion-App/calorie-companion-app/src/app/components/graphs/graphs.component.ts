@@ -4,6 +4,7 @@ import { GraphService } from '../../services/graph.service';
 
 // Chart.js Dependencies for the charts
 import { Chart } from 'chart.js';
+import { FoodBank } from '../../models/FoodBank';
 
 @Component({
   selector: 'app-graphs',
@@ -22,182 +23,144 @@ export class GraphsComponent implements OnInit {
   this.carbs = carbs;
   this.time = time;
   */
-  userData = [];
+ /* holds all user data */
+  userData: FoodBank[] = new Array();
+/* holds user data aggretated by day */
+  sortedData: FoodBank[] = new Array();
   // dateMessage
   dateMessage = 'Enter the start and end dates';
-  // chart object to hold our graphs
+  // chart array to hold our graphs
   chart = [];
-  // arrays of individual values
+  // arrays of individual values for use with chart array
   calories = [];
   protein = [];
   fats = [];
   carbs = [];
   times = [];
 
-  /* testing array of foodstuffs */
-  testData = [
-    {'id': 10,
-     'userId': 1,
-     'name': 'Pepe',
-     'calories': 100,
-     'protein': 13,
-     'fats': 18,
-     'carbs': 26,
-     'time': new Date(2018, 4, 2, 7, 20, 51, 123)},
-     {'id': 11,
-     'userId': 1,
-     'name': 'Pepe',
-     'calories': 180,
-     'protein': 20,
-     'fats': 12,
-     'carbs': 22,
-     'time': new Date(2018, 4, 2, 7, 20, 52, 456)},
-     {'id': 12,
-     'userId': 1,
-     'name': 'Pepe',
-     'calories': 80,
-     'protein': 3,
-     'fats': 15,
-     'carbs': 10,
-     'time': new Date(2018, 4, 2, 7, 20, 53, 456)},
-     {'id': 13,
-     'userId': 1,
-     'name': 'Pepe',
-     'calories': 180,
-     'protein': 20,
-     'fats': 12,
-     'carbs': 22,
-     'time': new Date(2018, 4, 2, 12, 28, 1, 789)},
-     {'id': 14,
-     'userId': 1,
-     'name': 'Pepe',
-     'calories': 100,
-     'protein': 9,
-     'fats': 20,
-     'carbs': 29,
-     'time': new Date(2018, 4, 2, 12, 28, 1, 789)},
-     {'id': 11,
-     'userId': 1,
-     'name': 'Pepe',
-     'calories': 140,
-     'protein': 20,
-     'fats': 12,
-     'carbs': 22,
-     'time': new Date(2018, 4, 2, 19, 11, 20, 789)},
-     {'id': 11,
-     'userId': 1,
-     'name': 'Pepe',
-     'calories': 140,
-     'protein': 20,
-     'fats': 12,
-     'carbs': 22,
-     'time': new Date(2018, 4, 3, 7, 19, 47, 123)},
-     {'id': 11,
-     'userId': 1,
-     'name': 'Pepe',
-     'calories': 80,
-     'protein': 20,
-     'fats': 12,
-     'carbs': 22,
-     'time': new Date(2018, 4, 3, 7, 19, 47, 123)},
-     {'id': 11,
-     'userId': 1,
-     'name': 'Pepe',
-     'calories': 120,
-     'protein': 20,
-     'fats': 12,
-     'carbs': 22,
-     'time': new Date(2018, 4, 4, 7, 20, 52, 456)},
-     {'id': 11,
-     'userId': 1,
-     'name': 'Pepe',
-     'calories': 100,
-     'protein': 20,
-     'fats': 12,
-     'carbs': 22,
-     'time': new Date(2018, 4, 5, 8, 31, 59, 0)},
-  ];
+
   /* grabs the current date button entries and will eventually
     update the graph in order to reflect the new date range */
-    getData(from, to) {
+  getData(from, to) {
 
-      if (from === '') {
-        this.dateMessage = '\tFrom date must be set';
-        return;
-      }
-      if (to === '') {
-        this.dateMessage = '\tTo date must be set';
-        return;
-      }
-      const fromDate = new Date(from);
-      const toDate = new Date(to);
-      if (fromDate.valueOf() > toDate.valueOf()) {
-        this.dateMessage = '\tFrom date must be earlier than To date!';
-        return;
-      }
-      console.log('Dates validated');
-
+    if (from === '') {
+      this.dateMessage = '\tFrom date must be set';
+      return;
     }
+    if (to === '') {
+      this.dateMessage = '\tTo date must be set';
+      return;
+    }
+    const fromDate = new Date(from);
+    const toDate = new Date(to);
+    if (fromDate.valueOf() > toDate.valueOf()) {
+      this.dateMessage = '\tFrom date must be earlier than To date!';
+      return;
+    }
+    console.log('Dates validated');
+    console.log(this.userData);
+
+  }
+
+  /* uses all use data to create an accumulation of nutrients on a per day basis */
+  getDailyData(foods: FoodBank[]) {
+
+    const dailyFoods = new Array();
+    let currentDate = foods[0].time;
+    let caloriesVal = foods[0].calories;
+    let proteinVal = foods[0].protein;
+    let fatsVal = foods[0].fats;
+    let carbsVal = foods[0].carbs;
+    for (let i = 1;  i < foods.length; i++) {
+      if (new Date(foods[i].time).getDay() === new Date(currentDate).getDay()) {
+        caloriesVal += foods[i].calories;
+        proteinVal += foods[i].protein;
+        fatsVal += foods[i].fats;
+        carbsVal += foods[i].carbs;
+
+        dailyFoods.push({
+          calories: caloriesVal,
+          protein: proteinVal,
+          fats: fatsVal,
+          carbs: carbsVal,
+          time: currentDate});
+
+      } else {
+
+          currentDate = foods[i].time;
+          caloriesVal = foods[i].calories;
+          proteinVal = foods[i].protein;
+          fatsVal = foods[i].fats;
+          carbsVal = foods[i].carbs;
+      }
+    }
+    console.log(dailyFoods);
+    return dailyFoods;
+  }
 
   constructor(private graphService: GraphService) { }
 
   ngOnInit() {
     // must be changed when we implement user data requests
-    this.userData = this.testData;
-    this.graphService.getUserFoodHistory(7).subscribe( foods =>  {
+    this.graphService.getUserFoodHistory(65).subscribe(foods => {
       this.userData = foods;
-      console.log('foods are:\n');
-      console.log(this.userData);
-        // this.graphService.subscribers.next(users);
-        // left off here
-      for (let i = 0; i < this.userData.length; i++) {
-        this.calories.push(this.userData[i].calories);
-        this.protein.push(this.userData[i].protein);
-        this.fats.push(this.userData[i].fats);
-        this.carbs.push(this.userData[i].carbs);
-        this.times.push(this.userData[i].time);
+      // sort data into individual days
+      this.sortedData = this.getDailyData(this.userData); // this.getDailyData(this.userData);
+
+      console.log('foods: ' + foods);
+      console.log('user: ' + this.sortedData);
+      console.log('sort: ' + this.sortedData);
+
+      for (let i = 0; i < this.sortedData.length; i++) {
+        this.calories.push(this.sortedData[i].calories);
+        this.protein.push(this.sortedData[i].protein);
+        this.fats.push(this.sortedData[i].fats);
+        this.carbs.push(this.sortedData[i].carbs);
+        this.times.push(this.sortedData[i].time);
       }
+      // all user food populated
+
+
+      Chart.defaults.global.defaultFontSize = 18;
+      Chart.defaults.global.defaultFontColor = '#ff8500';
+      this.chart = new Chart('canvas', {
+        type: 'bar',
+        data: {
+          labels: this.times,
+          datasets: [{
+            label: 'Calories',
+            data: this.calories,
+            backgroundColor: 'rgba(255, 80, 0, 0.5)'
+          }, {
+            label: 'Protein',
+            data: this.protein,
+            backgroundColor: 'rgba(0, 80, 255 0.5)'
+          }, {
+            label: 'Fat',
+            data: this.fats,
+            backgroundColor: 'rgba(255, 255, 0, 0.5)'
+          }, {
+            label: 'Carbohydrates',
+            data: this.carbs,
+            backgroundColor: 'rgba(255, 180, 0, 0.5)'
+          }]
+        },
+        options: {
+          scales: {
+            xAxes: [{
+              type: 'time',
+              time: {
+                minUnit: 'hour'
+              },
+              distribution: 'linear'
+            }]
+          }
+        }
+      });
+
+
     });
 
     // chart instantiation based on current user data
-    Chart.defaults.global.defaultFontSize = 18;
-    Chart.defaults.global.defaultFontColor = '#ff8500';
-    this.chart = new Chart('canvas', {
-      type: 'line',
-      data: {
-        labels: this.times,
-        datasets: [{
-          label: 'Calories',
-          data: this.calories,
-          backgroundColor: 'rgba(255, 80, 0, 0.5)'
-        }, {
-          label: 'Protein',
-          data: this.protein,
-          backgroundColor: 'rgba(0, 80, 255 0.5)'
-        }, {
-          label: 'Fat',
-          data: this.fats,
-          backgroundColor: 'rgba(255, 255, 0, 0.5)'
-        }, {
-          label: 'Carbohydrates',
-          data: this.carbs,
-          backgroundColor: 'rgba(255, 180, 0, 0.5)'
-        }]
-      },
-      options: {
-        scales: {
-          xAxes: [{
-            type: 'time',
-            time: {
-              minUnit: 'hour'
-            },
-            distribution: 'linear'
-          }]
-        }
-      }
-    });
-  // test stuff
-  console.log(this.testData);
   }
-
 }

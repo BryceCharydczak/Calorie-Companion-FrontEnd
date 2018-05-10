@@ -8,7 +8,7 @@ import { FoodBank } from '../models/FoodBank';
 const API_URL = 'http://ccomp-env.frwspvq277.us-east-2.elasticbeanstalk.com/foods/user/';
 const HTTP_OPTIONS = {
   headers: new HttpHeaders({
-    'Content-Type': 'text',
+    'Content-Type': 'application/json',
   })
 };
 
@@ -17,7 +17,7 @@ export class GraphService {
 
   currentUserFoods;
 
-  getUserFoodHistory(id: number): Observable<FoodBank[]> {
+  getUserFoodHistory(id) {
     return this.http.get<FoodBank[]>(API_URL + id, HTTP_OPTIONS);
   }
 
