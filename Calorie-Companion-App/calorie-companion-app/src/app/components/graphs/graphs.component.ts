@@ -22,9 +22,9 @@ export class GraphsComponent implements OnInit {
   this.carbs = carbs;
   this.time = time;
   */
- /* holds all user data */
+  /* holds all user data */
   userData: FoodBank[] = new Array();
-/* holds user data aggretated by day */
+  /* holds user data aggretated by day */
   sortedData: FoodBank[] = new Array();
   // dateMessage
   dateMessage = 'Enter the start and end dates';
@@ -70,27 +70,30 @@ export class GraphsComponent implements OnInit {
     let proteinVal = foods[0].protein;
     let fatsVal = foods[0].fats;
     let carbsVal = foods[0].carbs;
-    for (let i = 1;  i < foods.length; i++) {
+    for (let i = 1; i < foods.length; i++) {
       if (new Date(foods[i].time).getDay() === new Date(currentDate).getDay()) {
         caloriesVal += foods[i].calories;
         proteinVal += foods[i].protein;
         fatsVal += foods[i].fats;
         carbsVal += foods[i].carbs;
 
+
+
+      } else {
+
         dailyFoods.push({
           calories: caloriesVal,
           protein: proteinVal,
           fats: fatsVal,
           carbs: carbsVal,
-          time: currentDate});
+          time: currentDate
+        });
 
-      } else {
-
-          currentDate = foods[i].time;
-          caloriesVal = foods[i].calories;
-          proteinVal = foods[i].protein;
-          fatsVal = foods[i].fats;
-          carbsVal = foods[i].carbs;
+        currentDate = foods[i].time;
+        caloriesVal = foods[i].calories;
+        proteinVal = foods[i].protein;
+        fatsVal = foods[i].fats;
+        carbsVal = foods[i].carbs;
       }
     }
     console.log(dailyFoods);
