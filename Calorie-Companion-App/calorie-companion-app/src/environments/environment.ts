@@ -5,5 +5,7 @@
 
 export const environment = {
   production: false,
+
   apiUrl: 'http://ccomp-env.frwspvq277.us-east-2.elasticbeanstalk.com/'
+
 };

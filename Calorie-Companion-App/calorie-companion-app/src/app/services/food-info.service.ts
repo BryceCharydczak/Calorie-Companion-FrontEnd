@@ -7,6 +7,7 @@ import { FoodBank } from '../models/FoodBank';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
 
+
 // Constants
 
 const API_URL1 = 'http://localhost:4200/chart-app/';
@@ -28,6 +29,7 @@ const API_URL = 'http://ccomp-env.frwspvq277.us-east-2.elasticbeanstalk.com/';
 @Injectable()
 export class FoodInfoService {
 
+
   subscribers: BehaviorSubject<FoodBank> = new BehaviorSubject<FoodBank>(null);
   allfoods: BehaviorSubject<Array<FoodBank>> = new BehaviorSubject<Array<FoodBank>>(null);
   foodBank: FoodBank = new FoodBank();
@@ -39,6 +41,7 @@ export class FoodInfoService {
       {'query': foodDesc}, HTTP_OPTIONS).map(result => result);
   }
 
+
   sendFoods (nk: string) {
     console.log(`Attempting to submit foods`);
     // const json = JSON.stringify(nk);
@@ -46,6 +49,8 @@ export class FoodInfoService {
     console.log('send foods DONE');
     return this.http.post<FoodBank>(API_URL + 'foods', nk, HTTP_OPTIONS2);
     
+
+
   }
 
   constructor(private http: HttpClient) { }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodInfoService } from '../../services/food-info.service';
-import { UserService } from '../../services/user.service';
 
+import { UserService } from '../../services/user.service';
 
 import { Router } from '@angular/router';
 import { FoodBank } from '../../models/FoodBank';
+
 import { User } from '../../models/User';
 
 @Component({
@@ -17,6 +18,7 @@ export class FoodsearchComponent implements OnInit {
   searchItem = '';
   currentFood = null;
   savedFoods = Array();
+
   loggedUser = localStorage.getItem('user');
   userParsed = JSON.parse(localStorage.getItem('user'));
   key = Object.values(this.userParsed);
@@ -24,10 +26,10 @@ export class FoodsearchComponent implements OnInit {
   somefoods: Array<FoodBank> = new Array<FoodBank>();
   isValid = true;
   id = this.key[0];
-  
-  
+
   // The user can search any type of food by typing on the search bar and
   // the query will hit the API endpoint and return a food.
+
   getFood() {
     this.foodInfoService.getFoodInfo(this.searchItem).subscribe( res => {
 
@@ -41,13 +43,17 @@ export class FoodsearchComponent implements OnInit {
 
   // After searching a food, the user can add that food to the list of foods
   // the user wants to add for the array.
+
   addFood() {
     this.foodInfoService.getFoodInfo(this.searchItem).subscribe(res => {
       this.savedFoods.push(res);
+
       // console.log('This are saved foods ', this.savedFoods);
       localStorage.setItem('foodbank', JSON.stringify(this.savedFoods));
       console.log('-------------------', this.savedFoods);
       // console.log('After Res is stringify: ' , localStorage.getItem('foodbank'));
+
+      
     });
   }
 
@@ -63,6 +69,7 @@ export class FoodsearchComponent implements OnInit {
   }
 
   submitFood() {
+
 
     for(let i = 0; i < this.savedFoods.length; i++){
     let userId = +this.id; 
@@ -100,6 +107,8 @@ export class FoodsearchComponent implements OnInit {
     //   console.log('Foods Sent ----------' , res);
     // });
     
+
+ 
   }
 
 
