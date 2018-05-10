@@ -39,11 +39,13 @@ export class FoodInfoService {
       {'query': foodDesc}, HTTP_OPTIONS).map(result => result);
   }
 
-  sendFoods (foodBank: FoodBank) {
-    const json = JSON.stringify(foodBank);
-    console.log('Send Foods', json);
-    return this.http.post<FoodBank>(API_URL + 'foods', json, HTTP_OPTIONS2);
-
+  sendFoods (nk: string) {
+    console.log(`Attempting to submit foods`);
+    // const json = JSON.stringify(nk);
+    // console.log('Send Foods', json);
+    console.log('send foods DONE');
+    return this.http.post<FoodBank>(API_URL + 'foods', nk, HTTP_OPTIONS2);
+    
   }
 
   constructor(private http: HttpClient) { }

@@ -67,15 +67,17 @@ export class FoodsearchComponent implements OnInit {
     for(let i = 0; i < this.savedFoods.length; i++){
     let userId = +this.id; 
     let now: Date = new Date();
-    this.foodBank.userId = userId;
-    this.foodBank.time = now;
-    this.foodBank.name = this.savedFoods[i].foods[0].food_name;
-    this.foodBank.calories = this.savedFoods[i].foods[0].nf_calories;
-    this.foodBank.carbs = this.savedFoods[i].foods[0].nf_total_carbohydrate;
-    this.foodBank.fats = this.savedFoods[i].foods[0].nf_total_fat;
-    this.foodBank.protein = this.savedFoods[i].foods[0].nf_protein;
+    let f = new FoodBank();
+
+    f.userId = userId;
+    f.time = now;
+    f.name = this.savedFoods[i].foods[0].food_name;
+    f.calories = this.savedFoods[i].foods[0].nf_calories;
+    f.carbs = this.savedFoods[i].foods[0].nf_total_carbohydrate;
+    f.fats = this.savedFoods[i].foods[0].nf_total_fat;
+    f.protein = this.savedFoods[i].foods[0].nf_protein;
     
-    this.somefoods.push(this.foodBank);
+    this.somefoods.push(f);
   
     // console.log('-----foodbank-----', this.foodBank);
     
@@ -83,9 +85,12 @@ export class FoodsearchComponent implements OnInit {
     let k = JSON.stringify(this.somefoods);
     console.log('strigify k', k);
     
-    }
-    
-    
+    }    
+
+    let nk = JSON.stringify(this.somefoods);
+    this.foodInfoService.sendFoods(nk).subscribe(res => {
+        console.log('foods submitted');
+    });
     
     // localStorage.setItem('foods', JSON.stringify(this.foodBank));
     // console.log('strigify somefoods', localStorage.getItem('foods'));
