@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { GraphService } from '../../services/graph.service';
 import { Chart } from 'chart.js';
 import { FoodBank } from '../../models/FoodBank';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-graphs',
@@ -12,19 +13,11 @@ import { FoodBank } from '../../models/FoodBank';
 })
 export class GraphsComponent implements OnInit {
 
-  /* ~ Format of the data to be returned with a call ~
-  this.id = id; // long
-  this.userId = userId; // string
-  this.name = name; // string
-  this.calories = calories;
-  this.protein = protein;
-  this.fats = fats;
-  this.carbs = carbs;
-  this.time = time;
-  */
- /* holds all user data */
+  user: User = new User();
+  loggedUser = JSON.parse(localStorage.getItem('user'));
+  /* holds all user data */
   userData: FoodBank[] = new Array();
-/* holds user data aggretated by day */
+  /* holds user data aggretated by day */
   sortedData: FoodBank[] = new Array();
   // dateMessage
   dateMessage = 'Enter the start and end dates';
@@ -36,6 +29,16 @@ export class GraphsComponent implements OnInit {
   fats = [];
   carbs = [];
   times = [];
+  // line data to show standards
+  caloriesLine = [];
+  proteinLine = [];
+  fatsLine = [];
+  carbsLine = [];
+  // line standard
+  calorieStandard = 1000;
+  proteinStandard = 50;
+  fatsStandard = 60;
+  carbsStandard = 70;
 
   dateStartIndex = 0;
   dateEndIndex = undefined;
@@ -138,7 +141,7 @@ export class GraphsComponent implements OnInit {
     //   carbs: carbsVal,
     //   time: currentDate});
 
-    for (let i = 1;  i < foods.length; i++) {
+    for (let i = 1; i < foods.length; i++) {
 
       if (new Date(foods[i].time).getDay() === new Date(currentDate).getDay()) {
 
@@ -162,77 +165,112 @@ export class GraphsComponent implements OnInit {
           protein: proteinVal,
           fats: fatsVal,
           carbs: carbsVal,
-          time: currentDate});
+          time: currentDate
+        });
 
-          currentDate = foods[i].time;
-          caloriesVal = foods[i].calories;
-          proteinVal = foods[i].protein;
-          fatsVal = foods[i].fats;
-          carbsVal = foods[i].carbs;
+        currentDate = foods[i].time;
+        caloriesVal = foods[i].calories;
+        proteinVal = foods[i].protein;
+        fatsVal = foods[i].fats;
+        carbsVal = foods[i].carbs;
       }
     }
+    // populate line standard arrays
+    for (let i = 0; i < foods.length; i++) {
+      this.caloriesLine.push(this.calorieStandard);
+      this.proteinLine.push(this.proteinStandard);
+      this.fatsLine.push(this.fatsStandard);
+      this.carbsLine.push(this.carbsStandard);
+    }
+
     return dailyFoods;
   }
 
   constructor(private graphService: GraphService) { }
 
   ngOnInit() {
-    // must be changed when we implement user data requests
-    this.graphService.getUserFoodHistory(65).subscribe(foods => {
-      this.userData = foods;
-      // user data must be sorted
-      this.userData.sort(
-        function( a, b) {return new Date(a.time).getTime() - new Date(b.time).getTime(); });
-      console.log(this.userData);
-      // sort data into individual days
-      this.sortedData = this.getDailyData(this.userData); // this.getDailyData(this.userData);
+    if (this.loggedUser !== null) {
+      // must be changed when we implement user data requests
+      this.graphService.getUserFoodHistory(this.loggedUser.id).subscribe(foods => {
+        this.userData = foods;
+        // user data must be sorted
+        this.userData.sort(
+          function (a, b) { return new Date(a.time).getTime() - new Date(b.time).getTime(); });
+        console.log(this.userData);
+        // sort data into individual days
+        this.sortedData = this.getDailyData(this.userData); // this.getDailyData(this.userData);
 
-      for (let i = 0; i < this.sortedData.length; i++) {
-        this.calories.push(this.sortedData[i].calories);
-        this.protein.push(this.sortedData[i].protein);
-        this.fats.push(this.sortedData[i].fats);
-        this.carbs.push(this.sortedData[i].carbs);
-        this.times.push(this.sortedData[i].time);
-      }
-      // all user food populated
-
-      Chart.defaults.global.defaultFontSize = 18;
-      Chart.defaults.global.defaultFontColor = '#ff8500';
-      this.chart = new Chart('canvas', {
-        type: 'bar',
-        data: {
-          labels: this.times,
-          datasets: [{
-            label: 'Calories',
-            data: this.calories,
-            backgroundColor: 'rgba(255, 80, 0, 0.5)'
-          }, {
-            label: 'Protein',
-            data: this.protein,
-            backgroundColor: 'rgba(0, 80, 255 0.5)'
-          }, {
-            label: 'Fat',
-            data: this.fats,
-            backgroundColor: 'rgba(255, 255, 0, 0.5)'
-          }, {
-            label: 'Carbohydrates',
-            data: this.carbs,
-            backgroundColor: 'rgba(255, 180, 0, 0.5)'
-          }]
-        },
-        options: {
-          multiTooltipTemplate: '<%= value + " %" %>',
-          scales: {
-            xAxes: [{
-              type: 'time',
-              time: {
-                minUnit: 'day'
-              },
-              distribution: 'linear'
-            }]
-          }
+        for (let i = 0; i < this.sortedData.length; i++) {
+          this.calories.push(this.sortedData[i].calories);
+          this.protein.push(this.sortedData[i].protein);
+          this.fats.push(this.sortedData[i].fats);
+          this.carbs.push(this.sortedData[i].carbs);
+          this.times.push(this.sortedData[i].time);
         }
+        // all user food populated, instantiating chart
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#ff8500';
+        this.chart = new Chart('canvas', {
+          type: 'bar',
+          data: {
+            labels: this.times,
+            datasets: [{
+              label: 'Calories',
+              data: this.calories,
+              backgroundColor: 'rgba(255, 80, 0, 0.5)'
+            }, {
+              label: 'Protein',
+              data: this.protein,
+              backgroundColor: 'rgba(0, 80, 255 0.5)'
+            }, {
+              label: 'Fat',
+              data: this.fats,
+              backgroundColor: 'rgba(255, 255, 0, 0.5)'
+            }, {
+              label: 'Carbohydrates',
+              data: this.carbs,
+              backgroundColor: 'rgba(255, 180, 0, 0.5)'
+            // }, {
+            //   label: 'cal',
+            //   data: this.caloriesLine,
+            //   type: 'line',
+            //   backgroundColor: 'rgba(0, 0, 0, 0)',
+            //   borderColor: 'rgba(180, 0, 0, 0.5)'
+            // }, {
+            //   label: 'prot',
+            //   data: this.proteinLine,
+            //   type: 'line',
+            //   backgroundColor: 'rgba(0, 0, 0, 0)',
+            //   borderColor: 'rgba(180, 0, 0, 0.5)'
+            // }, {
+            //   label: 'fat',
+            //   data: this.fatsLine,
+            //   type: 'line',
+            //   backgroundColor: 'rgba(0, 0, 0, 0)',
+            //   borderColor: 'rgba(180, 0, 0, 0.5)'
+            // }, {
+            //   label: 'carb',
+            //   data: this.carbsLine,
+            //   type: 'line',
+            //   backgroundColor: 'rgba(0, 0, 0, 0)',
+            // borderColor: 'rgba(180, 0, 0, 0.5)'
+            }]
+          },
+          options: {
+            multiTooltipTemplate: '<%= value + " %" %>',
+            scales: {
+              xAxes: [{
+                type: 'time',
+                time: {
+                  minUnit: 'day'
+                },
+                distribution: 'linear'
+              }]
+            }
+          }
+        });
       });
-    });
+      // end of chart instantiation
+    }
   }
 }
