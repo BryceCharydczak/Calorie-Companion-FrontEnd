@@ -3,8 +3,7 @@ version: 0.1
 phases:
   install:
     commands:
-      - cd Calorie-Companion-App
-      - cd calorie-companion-app
+      - cd Calorie-Companion-App/calorie-companion-app
       - printenv
       - npm install
   build:
