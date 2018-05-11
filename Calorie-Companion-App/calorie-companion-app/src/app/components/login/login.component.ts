@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   user: User = new User();
-  loggedUser = localStorage.getItem('user');
+  loggedUser: User = JSON.parse(localStorage.getItem('user'));
   // tslint:disable-next-line:no-inferrable-types
   isValid: boolean = true;
 
