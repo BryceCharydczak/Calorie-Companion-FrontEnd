@@ -89,6 +89,7 @@ export class FoodsearchComponent implements OnInit {
     let nk = JSON.stringify(this.somefoods);
     this.foodInfoService.sendFoods(nk).subscribe(res => {
         console.log('foods submitted');
+        this.router.navigate(['dashboard']);
     });
   }
 
