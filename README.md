@@ -11,3 +11,4 @@
 <br>
 <h3>Back-End</h3>
 <p><b>Maven</b></p>
+<p>Maven was used as our building framework in order to run potential test and automate the building of our application.  Maven offered sufficient use when deploying our backing to an Elastic Beanstalk to allow the front end to interact with it.</p>
